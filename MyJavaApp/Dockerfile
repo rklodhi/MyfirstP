@@ -1,13 +1,12 @@
-# Build Stage
-FROM maven:3.9.9-eclipse-temurin-17
-
+# Build stage
+FROM maven:3.9.9-eclipse-temurin-17 AS build
 WORKDIR /app
-
-# Copy project files
 COPY . .
-
-# Build the jar
 RUN mvn clean package -DskipTests
 
-# Run the application
-CMD ["java","-jar","target/*.jar"]
+# Runtime stage
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","app.jar"]
