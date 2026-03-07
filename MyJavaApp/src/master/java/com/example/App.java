@@ -7,7 +7,7 @@ public class App {
         while (true) {
             try {
                 Thread.sleep(10000); // sleep for 10 seconds
-                System.out.println("Application is running...");
+                System.out.println("Application is gud running...");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
