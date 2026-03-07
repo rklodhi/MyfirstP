@@ -1,13 +1,9 @@
-# Build Stage
-FROM maven:3.9.9-eclipse-temurin-17
+FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
-# Copy project files
-COPY . .
+COPY target/my-java-app-1.0-SNAPSHOT.jar app.jar
 
-# Build the jar
-RUN mvn clean package -DskipTests
+EXPOSE 8090
 
-# Run the application
-CMD ["java","-jar","target/*.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
