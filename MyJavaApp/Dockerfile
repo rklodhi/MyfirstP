@@ -2,7 +2,7 @@ FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-COPY target/*.jar app.jar
+COPY target/my-java-app-1.0-SNAPSHOT.jar app.jar
 
 EXPOSE 8090
 
