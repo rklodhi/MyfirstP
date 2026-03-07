@@ -1,11 +1,16 @@
 package com.example;
 
 public class App {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         System.out.println("Hello from Jenkins Maven Build!");
 
         while (true) {
-            Thread.sleep(10000);
+            try {
+                Thread.sleep(10000); // sleep for 10 seconds
+                System.out.println("Application is running...");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
